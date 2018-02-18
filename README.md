@@ -2,6 +2,9 @@
 
 # City Of Denver Election Campaign-Finance DApp
 
+# Demo Video
+
+[![Vantag3 demo](Vantag3.mov)]
 
 ## Dependencies
 * Truffle (for development and testing, building contracts)
