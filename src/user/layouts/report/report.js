@@ -2,36 +2,36 @@ import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
 
-import { candidateuPortId, contributorId, contribute } from '../../../util/connectors'
-var mnid = require('mnid')
-//import Upload from '../profile/Upload'
+var mnid = require("mnid");
 
-class Donor extends Component {
+import { candidateuPortId, contributorId, contribute } from '../../../util/connectors'
+
+class Report extends Component {
 
   constructor(props){
     super(props)
 
-    // this.state = {
-    //   numCandidate: 3,
-    //   candidates: ["Candidate1","Candidate2","Candidate3"],
-    //   selectedCandidate: "Candidate1",
-    //   transactionHash: null
-    // }
+    this.state = {
+      numCandidate: 3,
+      candidates: ["Candidate1","Candidate2","Candidate3"],
+      selectedCandidate: "Candidate1",
+      transactionHash: null
+    }
   }
 
   submit(){
-  var contributorId = "2ovWjYMPu6mBFBJ3nTZZT7dT38SRuiW6umh"
-    contribute(contributorId)
-     contribute(contributorId,
-       transactionHash => {
-      this.setState({
-        transactionHash: transactionHash
-      })
-    })
+  //  var contributorId = "2ovWjYMPu6mBFBJ3nTZZT7dT38SRuiW6umh"
+    //contribute(contributorId)
+    //  contribute(contributorId,
+    //    transactionHash => {
+    //   this.setState({
+    //     transactionHash: transactionHash
+    //   })
+    // })
   }
 
   componentDidMount(){
-     this.state.selectedCandidate("Candidate1");
+     //selectCandidate("Candidate1");
   }
 
   selectCandidate(candidate){
@@ -57,12 +57,11 @@ class Donor extends Component {
             {
               <div>
                 <br/>
-                <div style={{ marginTop: 16 }}>
+                <div style={{ marginTop: 10 }}>
                   {
-
                     <div className="card">
                       <div className="card-header">
-                        <h2 className="card-title">Campaign Fund Registration</h2>
+                      <h2 className="card-title">Campaign Fund Report</h2>
                       </div>
 
                       <div className="card-body">
@@ -72,12 +71,8 @@ class Donor extends Component {
                         <input type="text" value={"Independent"} className="form-control" />
                         <label>Address</label>
                         <input type="text" value={"Address"} className="form-control" />
-                        <button onClick={ this.submit.bind(this) } disabled={ false } className="btn btn-sm btn-success">Register Now</button>
-                        {
-                          this.state.transactionHash ?
-                          <p><a target="__blank" href={`https://rinkeby.etherscan.io/tx/${this.state.transactionHash}`}>Click here</a> to view this transaction on the Ethereum blockchain.</p>
-                          : null
-                        }
+                        <label>FundValue</label>
+                        <input type="text" value={"ETH 3000"} className="form-control" />
                       </div>
                     </div>
                   }
@@ -92,7 +87,8 @@ class Donor extends Component {
 }
 
 const mapStateToProps = state => ({
+
   user: state.user.data
 })
 
- export default connect(mapStateToProps)(Donor)
+export default connect(mapStateToProps)(Report)

@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import Donor from '../../user/layouts/donor/donor.js'
-import Candidate from '../../user/layouts/candidate/candidate.js'
+import Report from '../../user/layouts/report/report.js'
 
 class Dashboard extends Component {
   constructor(props, { authData }) {
@@ -16,9 +16,10 @@ class Dashboard extends Component {
       <main className="container">
         <div className="pure-g">
           <div className="pure-u-1-1">
-            <h1>{this.props.role === 'donor' ? 'Donor' : 'Donor ' } Dashboard</h1>
+            <br/>
+            <h1>{this.props.role === 'donor' ? 'Donor' : 'Reports ' } Dashboard</h1>
             {
-              this.props.role === "donor" ? <Donor /> : <Candidate />
+              this.props.role === "donor" ? <Donor /> : <Report />
             }
           </div>
         </div>
