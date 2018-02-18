@@ -6,6 +6,9 @@ import { HiddenOnlyAuth, VisibleOnlyAuth } from './util/wrappers.js'
 import LoginButtonContainer from './user/ui/loginbutton/LoginButtonContainer'
 import LogoutButtonContainer from './user/ui/logoutbutton/LogoutButtonContainer'
 
+// Images
+import VantageLogo from './img/VANTAGED.png'
+
 // Styles
 import './css/oswald.css'
 import './css/open-sans.css'
@@ -35,7 +38,12 @@ class App extends Component {
     return (
       <div className="App">
         <nav className="navbar pure-menu pure-menu-horizontal">
-          <Link to="/" className="pure-menu-heading pure-menu-link">Truffle Box</Link>
+         <li className="pure-menu-item">
+          <Link to="/" className="pure-menu-heading pure-menu-link"><img src={VantageLogo} alt="Vantage3 Logo" /></Link>
+         </li>
+         <li className="pure-menu-item">
+            <Link to="/" className="pure-menu-heading pure-menu-link">Denver City Election Campaign-Finance</Link>
+         </li>
           <ul className="pure-menu-list navbar-right">
             <OnlyGuestLinks />
             <OnlyAuthLinks />

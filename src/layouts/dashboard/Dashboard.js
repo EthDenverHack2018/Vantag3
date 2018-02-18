@@ -1,5 +1,10 @@
 import React, { Component } from 'react'
 
+import { connect } from 'react-redux'
+
+import Donor from '../../user/layouts/donor/donor.js'
+import Candidate from '../../user/layouts/candidate/candidate.js'
+
 class Dashboard extends Component {
   constructor(props, { authData }) {
     super(props)
@@ -11,8 +16,10 @@ class Dashboard extends Component {
       <main className="container">
         <div className="pure-g">
           <div className="pure-u-1-1">
-            <h1>Dashboard</h1>
-            <p><strong>Congratulations {this.props.authData.name}!</strong> If you're seeing this page, you've logged in with UPort successfully.</p>
+            <h1>{this.props.role === 'donor' ? 'Donor' : 'Donor ' } Dashboard</h1>
+            {
+              this.props.role === "donor" ? <Donor /> : <Candidate />
+            }
           </div>
         </div>
       </main>
@@ -20,4 +27,8 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard
+const mapStateToProps = state => ({
+  role: state.user.role
+})
+
+export default connect(mapStateToProps)(Dashboard)
