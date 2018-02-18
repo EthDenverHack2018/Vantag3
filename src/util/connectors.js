@@ -9,64 +9,53 @@ export const web3 = uport.getWeb3()
 
 import ABI from './contract_abi.json'
 
-export const DEPLOYED_ADDRESS = '0xd55d0c9c881d007b5bb7497a91a10f0ae7b9a1a2'
+export const DEPLOYED_ADDRESS = '0x9346e8a0c76825cd95bc3679ab83882fd66448ab'
 
-export const getDoctorCount = ( callback ) => {
+// var FundContract = web3.eth.contract(ABI);
+// var fundContractInstance = FundContract.at( DEPLOYED_ADDRESS );
+// var candidateuPortId = fundContractInstance.candidateuPortId(web3.eth.getCoinbase());
+// var contributorId = "2ovWjYMPu6mBFBJ3nTZZT7dT38SRuiW6umh"
+//
+// export const contribute = ({
+//   contributorId
+//   }, callback ) => {
+// var contribution = fundContractInstance.contribute(contributorId (e,r) => {
+//   callback( r )
+//  })
 
-  var HealthcareContract = web3.eth.contract(ABI);
-  var healthcareInstance = HealthcareContract.at( DEPLOYED_ADDRESS );
+  // var transaction = healthcareInstance.addRecord( candidatePublicKey, donorPublicKey, dataHash, dataFileReference, (e,r) => {
+  //
+  //   callback( r )
+  // })
 
-  var doctorCount = healthcareInstance.numRecords( function(e, r){
+// export const getDoctorAtIndex = ( index, callback ) => {
+//   var HealthcareContract = web3.eth.contract(ABI);
+//   var healthcareInstance = HealthcareContract.at( DEPLOYED_ADDRESS );
+//
+//   var doctors = healthcareInstance.getRecordAtIndex.call( index, function(e, r){
+//
+//     callback(r)
+//   } )
+//
+// }
 
-    callback(  r.c[0] )
-  } )
-}
-
-export const createSignature = ({
-  donorPublicKey,
-  candidatePublicKey,
-  dataHash,
-  dataFileReference
-  }, callback ) => {
-
-  var HealthcareContract = web3.eth.contract(ABI);
-  var healthcareInstance = HealthcareContract.at( DEPLOYED_ADDRESS );
-
-  var transaction = healthcareInstance.addRecord( candidatePublicKey, donorPublicKey, dataHash, dataFileReference, (e,r) => {
-
-    callback( r )
-  })
-}
-
-export const getDoctorAtIndex = ( index, callback ) => {
-  var HealthcareContract = web3.eth.contract(ABI);
-  var healthcareInstance = HealthcareContract.at( DEPLOYED_ADDRESS );
-
-  var doctors = healthcareInstance.getRecordAtIndex.call( index, function(e, r){
-
-    callback(r)
-  } )
-
-}
-
-export const addProvider = ( options, callback ) => {
-
-  var HealthcareContract = web3.eth.contract(ABI);
-  var healthcareInstance = HealthcareContract.at( DEPLOYED_ADDRESS );
-
-  healthcareInstance.register( options['address'], options['name'], options['specialty'], function(e, r){
-
+export const contribute = ( contributorId, callback ) => {
+  var FundContract = web3.eth.contract(ABI);
+  var fundContractInstance = FundContract.at( DEPLOYED_ADDRESS );
+  var candidateuPortId = fundContractInstance.candidateuPortId(web3.eth.getCoinbase());
+  var contributorId = "2ovWjYMPu6mBFBJ3nTZZT7dT38SRuiW6umh"
+  fundContractInstance.contribute(contributorId, function (e,r) {
     callback(r)
   })
 }
 
-export const getPatientCountForDoctor = ( doctorAddress, callback ) => {
-  var HealthcareContract = web3.eth.contract(ABI);
-  var healthcareInstance = HealthcareContract.at( DEPLOYED_ADDRESS );
-
-  var patientCount = healthcareInstance.getPatientCount( doctorAddress, function(e, r){
-
-    console.log("getPatientCount", e, r);
-  })
-
-}
+// export const getPatientCountForDoctor = ( doctorAddress, callback ) => {
+//   var HealthcareContract = web3.eth.contract(ABI);
+//   var healthcareInstance = HealthcareContract.at( DEPLOYED_ADDRESS );
+//
+//   var patientCount = healthcareInstance.getPatientCount( doctorAddress, function(e, r){
+//
+//     console.log("getPatientCount", e, r);
+//   })
+//
+// }
