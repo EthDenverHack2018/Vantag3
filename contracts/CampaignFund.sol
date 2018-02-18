@@ -86,7 +86,16 @@ contract CampaignFund {
         }
         
     }
+    
+    function contributorList() public returns (Contribution[]){
+        return (contributors);
         
+    }
+    
+    function payeeList() public returns (address[] ) {
+        return (payees);
+    }
+    
     /**********
      Standard kill() function to recover funds 
      **********/
